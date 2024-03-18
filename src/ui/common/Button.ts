@@ -1,10 +1,12 @@
-import { Container } from "pixi.js";
+import { Container, Sprite, Texture } from "pixi.js";
 
 type State = "default" | "hover" | "pressed" | "disabled";
 
 export class Button extends Container {
   private isDown = false;
   private state: State = "default";
+
+  innerView: Container;
 
   constructor(
     protected options: {
@@ -16,6 +18,9 @@ export class Button extends Container {
   ) {
     super();
 
+    this.innerView = new Container();
+    this.addChild(this.innerView);
+
     this.addView(options.defaultView);
     this.options.hoverView && this.addView(this.options.hoverView);
     this.options.pressedView && this.addView(this.options.pressedView);
@@ -23,6 +28,17 @@ export class Button extends Container {
 
     this.setState("default", true);
     this.initStateControl();
+  }
+
+  static create(textureName: string, ) {
+    const defaultView = new Sprite(Texture.from(`${textureName}_active`));
+    defaultView.anchor.x = 0.5;
+    const hoverView = new Sprite(Texture.from(`${textureName}_hover`));
+    hoverView.anchor.x = 0.5;
+    const pressedView = new Sprite(Texture.from(`${textureName}_press`));
+    pressedView.anchor.x = 0.5;
+
+    return new Button({ defaultView, hoverView, pressedView })
   }
 
   /**
@@ -66,7 +82,7 @@ export class Button extends Container {
   }
 
   addView(view: Container) {
-    this.addChild(view);
+    this.innerView.addChild(view);
     view.visible = false;
   }
 

@@ -11,7 +11,7 @@ export class Label extends Container {
 
   constructor(
     label?: string | number,
-    textStyle?: Partial<TextStyle> | TextStyle,
+    textStyle?: Partial<TextStyle>,
     shadowStyle?: Partial<TextStyle> & Partial<{ x: number; y: number }>
   ) {
     super();
