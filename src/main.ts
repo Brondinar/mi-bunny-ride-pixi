@@ -8,6 +8,7 @@ import { navigation } from "./utils/navigation";
 
 export const app = new Application();
 
+// @ts-ignore
 globalThis.__PIXI_APP__ = app;
 
 /** Set up a resize function for the app */

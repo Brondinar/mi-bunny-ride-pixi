@@ -82,7 +82,8 @@ class Navigation {
 
     // Add update function if available
     if (screen.update) {
-      app.ticker.add(screen.update, screen);
+      // todo
+      // app.ticker.add(screen.update, screen);
     }
 
     // Show the new screen
@@ -105,7 +106,8 @@ class Navigation {
 
     // Unlink update function if method is available
     if (screen.update) {
-      app.ticker.remove(screen.update, screen);
+      // todo
+      // app.ticker.remove(screen.update, screen);
     }
 
     // Remove screen from its parent (usually app.stage, if not changed)
