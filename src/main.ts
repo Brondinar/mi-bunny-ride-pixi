@@ -1,11 +1,14 @@
 import { sound } from "@pixi/sound";
 import { Application } from "pixi.js";
+import { HomeScene } from "./scenes/HomeScene";
 import { LoadScene } from "./scenes/LoadScene";
 import { PreloadBackground } from "./ui/scenes/preload/Background";
 import { initAssets } from "./utils/assets";
 import { navigation } from "./utils/navigation";
 
 export const app = new Application();
+
+globalThis.__PIXI_APP__ = app;
 
 /** Set up a resize function for the app */
 function resize() {
@@ -64,6 +67,8 @@ const init = async () => {
   navigation.setBackground(PreloadBackground);
 
   await navigation.showScreen(LoadScene);
+
+  await navigation.showScreen(HomeScene);
 };
 
 init();

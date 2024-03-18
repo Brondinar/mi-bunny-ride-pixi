@@ -16,10 +16,13 @@ export default {
     texture: pixiTexturePacker({
       texturePacker: {
         removeFileExtension: true,
+        extrude: 1,
       },
     }),
     manifest: pixiManifest({
       output: "./public/assets/assets-manifest.json",
+      createShortcuts: true,
+      trimExtensions: true,
     }),
   },
 };

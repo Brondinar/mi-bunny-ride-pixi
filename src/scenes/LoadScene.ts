@@ -2,6 +2,8 @@ import { Container } from "pixi.js";
 import { Bunny } from "../ui/scenes/preload/Bunny";
 
 export class LoadScene extends Container {
+  public static assetBundles = ["images/preload", "Environment"];
+
   private bunny: Bunny;
 
   constructor() {
